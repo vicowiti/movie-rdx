@@ -5,7 +5,7 @@ const apikey = "ac91ba4";
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://www.omdbapi.com/",
+    baseUrl: "https://www.omdbapi.com/",
   }),
   endpoints: (builder) => ({
     searchByTitle: builder.query({
