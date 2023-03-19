@@ -9,9 +9,6 @@ import MyRating from "./pages/MyRating";
 import { useSearchByTitleQuery } from "./features/movieSlice";
 
 const App = () => {
-  const { data } = useSearchByTitleQuery("avatar");
-  console.log("data", data);
-
   // className="bg-gradient-to-r from-indigo-900 to-green-400"
   return (
     <div>
