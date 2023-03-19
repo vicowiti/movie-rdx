@@ -15,7 +15,7 @@ const MovieListing = (props: Props) => {
   return (
     <>
       <div>{props.isLoading && <Spinner />}</div>
-      <section className="lg:grid lg:grid-cols-2 gap-6">
+      <section className="lg:grid lg:grid-cols-3 gap-6">
         {props.data?.map((movie) => (
           <MovieCard movie={movie} key={movie.imdbID} />
         ))}
