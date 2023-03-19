@@ -11,7 +11,7 @@ const MovieCard = ({ movie }: Props) => {
   return (
     <div className="bg-white p-2 my-4 rounded-lg flex items-center gap-5 shadow-lg dark:shadow-lg-dark">
       <div>
-        <img src={movie.Poster} className="w-[150px] h-[200px]" />
+        <img src={movie.Poster} className="w-[100px] h-[150px]" />
       </div>
       <div>
         <div className="flex items-center mb-3 gap-3">
