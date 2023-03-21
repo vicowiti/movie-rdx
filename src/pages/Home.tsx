@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MovieListing from "../components/MovieListing";
 import SearchBar from "../components/SearchBar";
-import { useSearchByTitleQuery } from "../features/movieSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovieByTitle } from "./../features/handleMoviesSlice";
+import { RootState } from "../app/store";
 
 type Props = {};
 
 const Home = (props: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
 
-  const { data, isLoading, isError } = useSearchByTitleQuery(
-    searchTerm.length > 2 ? searchTerm : ""
+  const { movies, isLoading, isError } = useSelector(
+    (state: RootState) => state.movies
   );
 
-  console.log(data);
+  console.log("movies", movies);
+
+  useEffect(() => {
+    dispatch<any>(getMovieByTitle(searchTerm.length > 2 ? searchTerm : ""));
+  }, [searchTerm]);
 
   return (
     <div
@@ -23,11 +30,13 @@ const Home = (props: Props) => {
       }
     >
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <MovieListing
-        data={data?.Search}
-        isLoading={isLoading}
-        isError={isError}
-      />
+      {movies && (
+        <MovieListing
+          data={movies?.Search}
+          isLoading={isLoading}
+          isError={isError}
+        />
+      )}
     </div>
   );
 };

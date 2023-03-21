@@ -10,9 +10,9 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ApiProvider api={moviesApi}>
-        <App />
-      </ApiProvider>
+      {/* <ApiProvider api={moviesApi}> */}
+      <App />
+      {/* </ApiProvider> */}
     </Provider>
   </React.StrictMode>
 );

@@ -6,13 +6,14 @@ import Favorites from "./pages/Favorites";
 import Feedback from "./pages/Feedback";
 import Home from "./pages/Home";
 import MyRating from "./pages/MyRating";
-import { useSearchByTitleQuery } from "./features/movieSlice";
+import NavBar from "./components/NavBar";
 
 const App = () => {
   // className="bg-gradient-to-r from-indigo-900 to-green-400"
   return (
     <div>
       <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />

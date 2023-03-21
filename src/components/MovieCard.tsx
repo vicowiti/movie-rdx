@@ -11,10 +11,7 @@ type Props = {
 const MovieCard = ({ movie }: Props) => {
   return (
     <Link to={`/details/${movie.imdbID}`}>
-      <div
-        className="bg-white p-2 my-4 rounded-lg flex items-center gap-5 shadow-lg dark:shadow-lg-dark"
-        onClick={() => console.log("newPAGE")}
-      >
+      <div className="bg-white p-2 my-4 rounded-lg flex items-center gap-5 shadow-lg dark:shadow-lg-dark">
         <div>
           <img src={movie.Poster} className="w-[100px] h-[150px]" />
         </div>

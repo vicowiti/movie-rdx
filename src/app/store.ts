@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import handleMoviesSlice from "../features/handleMoviesSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    movies: handleMoviesSlice,
+  },
 });
 
 export default store;
