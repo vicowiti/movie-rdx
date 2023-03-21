@@ -14,7 +14,7 @@ import { addFave, getMovieById } from "../features/handleMoviesSlice";
 import { RootState } from "../app/store";
 
 type Props = {};
-
+//
 const Details = (props: Props) => {
   const dispatch = useDispatch();
   const { id } = useParams();
