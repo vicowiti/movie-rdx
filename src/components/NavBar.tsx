@@ -40,6 +40,7 @@ const Nav = () => {
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
               <Link
+                onClick={() => setOpen(false)}
                 to={link.link}
                 className="text-white hover:text-[#ededed] duration-500"
               >
@@ -47,7 +48,7 @@ const Nav = () => {
               </Link>
             </li>
           ))}
-          <Link to="/favorites">
+          <Link to="/favorites" onClick={() => setOpen(false)}>
             <button
               className="bg-[#00ced1] font-medium flex gap-2 items-center text-white  py-2 px-6 rounded md:ml-8 hover:bg-[#7dff56] 
     duration-500"

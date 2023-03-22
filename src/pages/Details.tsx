@@ -35,7 +35,6 @@ const Details = (props: Props) => {
   }, [id]);
 
   const isInFavorites = favorites.some((movie) => movie.imdbID === id);
-  console.log("isFavorite", isInFavorites);
 
   const addToFavorites = () => {
     dispatch(addFave(selectedMovie));

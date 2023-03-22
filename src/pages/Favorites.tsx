@@ -10,7 +10,7 @@ const Favorites = (props: Props) => {
   return (
     <div>
       {favorites.length < 1 ? (
-        <div>No Favorite movies yet</div>
+        <div className="text-center mt-5">No Favorite movies yet</div>
       ) : (
         <MovieListing data={favorites} />
       )}

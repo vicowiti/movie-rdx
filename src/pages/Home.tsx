@@ -15,8 +15,6 @@ const Home = (props: Props) => {
     (state: RootState) => state.movies
   );
 
-  console.log("movies", movies);
-
   useEffect(() => {
     dispatch<any>(getMovieByTitle(searchTerm.length > 2 ? searchTerm : ""));
   }, [searchTerm]);

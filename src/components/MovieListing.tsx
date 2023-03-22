@@ -10,8 +10,6 @@ type Props = {
 };
 
 const MovieListing = (props: Props) => {
-  console.log(props.data);
-
   return (
     <>
       <div>{props.isLoading && <Spinner />}</div>
