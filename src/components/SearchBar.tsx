@@ -12,8 +12,8 @@ const SearchBar = (props: Props) => {
     <div
       className={
         searchTerm.length > 2
-          ? "flex items-center flex-row"
-          : "flex flex-col items-center lg:flex-col lg:justify-center gap-3"
+          ? "flex items-center flex-row "
+          : "flex flex-col items-center lg:flex-col lg:justify-center gap-3 "
       }
     >
       {/* Logo */}

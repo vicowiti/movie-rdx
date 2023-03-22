@@ -5,8 +5,8 @@ import Spinner from "./Spinner";
 
 type Props = {
   data: SearchedMovie[];
-  isLoading: boolean;
-  isError: boolean;
+  isLoading?: boolean;
+  isError?: boolean;
 };
 
 const MovieListing = (props: Props) => {
