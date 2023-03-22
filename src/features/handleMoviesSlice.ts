@@ -29,7 +29,7 @@ export const getMovieByTitle = createAsyncThunk(
   "getMovieByTitle",
   async (title: string) => {
     const response = await fetch(
-      `http://www.omdbapi.com/?&apikey=${apikey}&s=${title}`
+      `https://www.omdbapi.com/?&apikey=${apikey}&s=${title}`
     );
 
     const data = await response.json();
@@ -41,7 +41,7 @@ export const getMovieById = createAsyncThunk(
   "getMovieById",
   async (id: string) => {
     const response = await fetch(
-      `http://www.omdbapi.com/?&apikey=${apikey}&i=${id}`
+      `https://www.omdbapi.com/?&apikey=${apikey}&i=${id}`
     );
 
     const data = await response.json();
