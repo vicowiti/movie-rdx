@@ -13,7 +13,7 @@ const SearchBar = (props: Props) => {
       className={
         searchTerm.length > 2
           ? "flex items-center flex-row "
-          : "flex flex-col items-center lg:flex-col lg:justify-center gap-3 "
+          : "flex flex-col items-center lg:flex-col lg:justify-center gap-3 mt-[-150px]"
       }
     >
       {/* Logo */}
@@ -24,11 +24,12 @@ const SearchBar = (props: Props) => {
         />
       </div>
       <input
+        autoFocus
         type="text"
         placeholder="Search By Title"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-[80vw] h-[39px] rounded-3xl outline lg:w-[40vw]  p-1 lg:rounded-full bg-indigo-900/5"
+        className="w-[80vw] h-[39px] rounded-3xl outline-none lg:w-[40vw]  p-2 lg:rounded-xl bg-[#303134]"
       />
     </div>
   );

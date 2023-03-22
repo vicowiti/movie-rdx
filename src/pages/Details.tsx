@@ -7,11 +7,18 @@ import {
   BiBookmarkHeart,
   BiArrowBack,
 } from "react-icons/bi";
+import { AiOutlineDelete } from "react-icons/ai";
 import { TbReportMoney } from "react-icons/tb";
-import { BsStarFill } from "react-icons/bs";
+import { BsStarFill, BsPeopleFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { addFave, getMovieById } from "../features/handleMoviesSlice";
+import {
+  addFave,
+  getMovieById,
+  removeFave,
+} from "../features/handleMoviesSlice";
 import { RootState } from "../app/store";
+import Favorites from "./Favorites";
+import { toast } from "react-toastify";
 
 type Props = {};
 //
@@ -19,17 +26,25 @@ const Details = (props: Props) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const { selectedMovie, isLoading, isError } = useSelector(
+  const { selectedMovie, isLoading, isError, favorites } = useSelector(
     (state: RootState) => state.movies
   );
 
   useEffect(() => {
     dispatch<any>(getMovieById(String(id)));
   }, [id]);
-  // const { data, isLoading, isError } = useSearchByIdQuery(id as string);
+
+  const isInFavorites = favorites.some((movie) => movie.imdbID === id);
+  console.log("isFavorite", isInFavorites);
 
   const addToFavorites = () => {
     dispatch(addFave(selectedMovie));
+    toast.success("Added to favorites");
+  };
+
+  const removeFromFavorites = () => {
+    dispatch(removeFave(id));
+    toast.error("Removed from favorites");
   };
 
   return (
@@ -37,7 +52,7 @@ const Details = (props: Props) => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="p-3 bg-white rounded-xl shadow-xl dark:shadow-xl-dark">
+        <div className="p-3 bg-[#303134] rounded-xl shadow-xl dark:shadow-xl-dark">
           <div className="my-2" onClick={() => navigate(-1)}>
             <BiArrowBack size={30} />
           </div>
@@ -58,36 +73,49 @@ const Details = (props: Props) => {
               <h1 className="font-extrabold text-4xl my-5">
                 {selectedMovie?.Title}
               </h1>
-              <p className="font-bold max-w-[600px] my-5">
+              <p className="font-thin max-w-[600px] my-5">
                 {selectedMovie?.Plot}
               </p>
               {/* favorites */}
               <section>
-                <button
-                  className="p-2 outline rounded-lg flex items-center gap-2"
-                  onClick={addToFavorites}
-                >
-                  Add to favorites <BiBookmarkHeart size={20} />
-                </button>
+                {!isInFavorites ? (
+                  <button
+                    className="p-2 font-bold rounded-lg flex items-center gap-2 bg-[#7dff56]"
+                    onClick={addToFavorites}
+                  >
+                    Add to favorites <BiBookmarkHeart size={20} />
+                  </button>
+                ) : (
+                  <button
+                    className="p-2 font-bold rounded-lg flex items-center gap-2 bg-red-700"
+                    onClick={removeFromFavorites}
+                  >
+                    Remove from Favorites <AiOutlineDelete />
+                  </button>
+                )}
               </section>
               {/* data */}
               <section className="flex flex-col gap-3 p-3">
                 <h1 className="font-bold">Movie Data</h1>
                 <div className="flex items-center gap-3">
-                  <BiTime size={25} />
+                  <BiTime size={25} color="#00ced1" />
                   <p>{selectedMovie?.Runtime}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <BiCalendar size={25} />
+                  <BiCalendar size={25} color="#00ced1" />
                   <p>{selectedMovie?.Released}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <TbReportMoney size={25} />
+                  <TbReportMoney size={25} color="#00ced1" />
                   <p>{selectedMovie?.BoxOffice}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <BsStarFill color="gold" size={25} />
                   <p>{selectedMovie?.imdbRating}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <BsPeopleFill color="#00ced1" size={25} />
+                  <p>{selectedMovie?.Actors}</p>
                 </div>
               </section>
             </div>

@@ -63,6 +63,12 @@ const handleMovieState = createSlice({
         localStorage.setItem("myFavorites", JSON.stringify(state.favorites));
       }
     },
+
+    removeFave: (state, { payload }) => {
+      const newArr = state.favorites.filter((fave) => fave.imdbID !== payload);
+      state.favorites = newArr;
+      localStorage.setItem("myFavorites", JSON.stringify(state.favorites));
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getMovieByTitle.fulfilled, (state, { payload }) => {
@@ -97,4 +103,4 @@ const handleMovieState = createSlice({
 });
 
 export default handleMovieState.reducer;
-export const { addFave } = handleMovieState.actions;
+export const { addFave, removeFave } = handleMovieState.actions;

@@ -7,11 +7,14 @@ import Feedback from "./pages/Feedback";
 import Home from "./pages/Home";
 import MyRating from "./pages/MyRating";
 import NavBar from "./components/NavBar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   // className="bg-gradient-to-r from-indigo-900 to-green-400"
   return (
     <div>
+      <ToastContainer />
       <BrowserRouter>
         <NavBar />
         <Routes>
