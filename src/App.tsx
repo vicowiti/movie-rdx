@@ -11,7 +11,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  // className="bg-gradient-to-r from-indigo-900 to-green-400"
   return (
     <div>
       <ToastContainer />

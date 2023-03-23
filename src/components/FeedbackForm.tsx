@@ -54,6 +54,7 @@ const FeedbackForm = (props: Props) => {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             className="w-full rounded-md p-3 bg-[#303134]"
+            required
           />
         </div>
 
@@ -64,6 +65,7 @@ const FeedbackForm = (props: Props) => {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             className="w-full rounded-md p-3 bg-[#303134]"
+            required
           />
         </div>
 
@@ -72,6 +74,7 @@ const FeedbackForm = (props: Props) => {
             type="email"
             placeholder="Email"
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
             className="w-full rounded-md p-3 bg-[#303134]"
           />
@@ -79,6 +82,7 @@ const FeedbackForm = (props: Props) => {
 
         <div className="my-3">
           <textarea
+            required
             placeholder="Message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
